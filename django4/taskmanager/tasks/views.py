@@ -39,3 +39,14 @@ def edit(request, id):
         form = TaskForm(request.POST, instance=hz)
         form.save()
         return redirect('index')
+    
+
+def delete(request, id):
+    hz = get_object_or_404(Task, id=id)
+    if request.method == 'GET':
+        context = {'form': TaskForm(instance=hz), 'id':id}
+        return render (request, 'delete.html',context)
+    elif request.method == 'POST':
+        form = Task.objects.get(pk=id)
+        form.delete()
+    return redirect('index')

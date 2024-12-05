@@ -1,18 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
 <body>
-    <h4><a href='http://127.0.0.1:8000/'>Назад</a></h4>
     <form method="post">
         {% csrf_token %}
-        <br>{{ form.title }}<br>
-        <br>{{ form.description }}<br>
-        <p>Статус задачи: {{ form.is_completed }}</p><br>
-        <br><button type="submit">изменить</button>
+        <div class="form-floating mb-3">
+            <input type="text" name="title" class="form-control" id="floatingInputDisabled" value="{{ form.title.value }}">
+            <label for="floatingInputDisabled">Задача</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" name="description" class="form-control" id="floatingInputDisabled" value="{{ form.description.value }}">
+            <label for="floatingInputDisabled">Задача</label>
+        </div>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Статус задачи</label>
+            <input class="form-check-input" name="is_completed" type="checkbox" role="switch" id="flexSwitchCheckDefault" {% if form.is_completed.value %} checked {% endif %}>
+          </div><br>
+        <button type="submit" class="btn btn-primary">изменить</button>
     </form>
 </body>
-</html>
+{% endblock %}
+
+
+<!-- {%if form.is_completed %} checked {% endif %} -->

@@ -19,8 +19,4 @@ class TaskForm(ModelForm):
             'is_completed': CheckboxInput(attrs={
                 'class': 'required checkbox form-control'
             })
-
-            #     'created_at': DateTimeInput(attrs={
-            #     'placeholder' : 'Статус'
-            # })
         }

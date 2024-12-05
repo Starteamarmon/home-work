@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <from method="POST"><br>
+        <div class="container overflow-hidden text-center">
+            <div class="container px-4 text-center"><h1>ПРАВДА УДOЛИТЬ?</h1></div><br>
+            <div class="row gx-5">
+              <div class="col">
+               <div class="p-3"><button type="submit" class="btn btn-danger"><img src="https://i.pinimg.com/originals/a0/0b/38/a00b38a71f159f82a5de0ff21fa65284.jpg" width="45" height="40">   Надо</button></div>
+              </div>
+              <div class="col">
+                <div class="p-3"><a class="btn btn-primary" href="http://127.0.0.1:8000/"><img src="https://emoji.discadia.com/emojis/36fe9d01-0df4-4580-bcfa-26ce168e7094.jpg" width="45" height="40">     Ненадо</a></div>
+              </div>
+            </div>
+          </div>
+    </from>
+</body>
+{% endblock %}
+

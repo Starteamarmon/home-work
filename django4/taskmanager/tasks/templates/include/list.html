@@ -1,0 +1,26 @@
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        padding-left: 5%;
+        padding-top: 5px;
+        padding-right: 5%;
+    }    
+</style> 
+
+<div class="list-group">
+    <form method="post">
+        {% csrf_token %}
+        {% for t in tsk %}
+        <br><div class="list-group-item d-flex py-3 flex-column list-group-item-action">
+            <div calss="card-body">
+                <a href="{% url 'edit' t.id %}"><h6>{{t.title}}</h6></a>
+                {{t.description}}          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" disabled {% if t.is_completed %} checked {%endif %}/>
+                <a class="btn btn-danger ml-n3" href="{% url 'delete' t.id %}" width="45" height="40"> Удолить </a>
+            </div>
+        </div>
+        {% endfor %}
+    </form>
+</div>
+

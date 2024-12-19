@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        {% for b in bk %}
+            {{ b.title }},{{ b.author }},{{ b.published_year }},{{ b.genre }}, {{ b.is_available }}<br>
+        {% endfor %}
+    </form>
+    <a href="{% url 'search' %}">Поиск по жанру</a><br>
+    <a href="{% url 'users' %}">Юзеры</a><br>
+    <a href="{% url 'free_list' %}">Арендовать</a>
+</body>
+</html>

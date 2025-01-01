@@ -13,4 +13,7 @@ urlpatterns = [
     path('projects/', views.projects, name='projects'),
     path('projects/create/', views.create_project, name='projects_create'),
     path('project/<int:project_id>', views.project, name='project'),
+    path('signup', views.signup, name='signup'),
+    path('signin', views.signin, name='signin'),
+    path('signout/', views.signout, name='signout'),
 ]

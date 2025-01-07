@@ -9,11 +9,13 @@
     <form method="post">
         {% csrf_token %}
         {% for b in bk %}
-            {{ b.title }},{{ b.author }},{{ b.published_year }},{{ b.genre }}, {{ b.is_available }}<br>
+            {{ b.title }},{{ b.author }},{{ b.published_year }},{{ b.genre }}, {{ b.is_available }}
+            <a href="{% url 'edit_book' b.id %}">Изменить </a> <a href="{% url 'delete_book' b.id %}">удОлить</a><br>
         {% endfor %}
     </form>
     <a href="{% url 'search' %}">Поиск по жанру</a><br>
     <a href="{% url 'users' %}">Юзеры</a><br>
-    <a href="{% url 'free_list' %}">Арендовать</a>
+    <a href="{% url 'rent' %}">Арендовать</a><br>
+    <a href="{% url 'add_book' %}">Добавить книгу</a>
 </body>
 </html>

@@ -8,11 +8,8 @@
 <body>
     <form method="post">
         {% csrf_token %}
-        {{ form.user }}<br>
-        {{ form.book }}<br>
-        {{ form.rental_date }}<br>
-        {{ form.return_date }}<br>
-        <button type="submit">Арендовать</button>
+        <a>УдОлить книгу "{{ book.title }}"?</a> 
+        <button type="submit">ДА</button><a href="{% url 'book' %}">Ноу</a>
     </form>
 </body>
 </html>

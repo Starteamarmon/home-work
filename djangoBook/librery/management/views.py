@@ -52,16 +52,41 @@ def free_list(request):
     return render(request,'free_list.html',context={'book_list_free':book_list_free})
 
 
-def rent(request,id):
-    if request.method == "GET":
-        rent_book = RentalForm()
-        rent_book.book = Book.objects.get(id=id)
-        rent_book.user = User.objects.all()
-        book = Book.objects.get(id=id)
-        return render(request, 'rent.html', context={'book':book,'rent_book':rent_book})
-    elif request.method == 'POST':
-        book = Book.objects.get(id=id)
-        book.is_available = False
-        book.save()
-    return redirect('free_list')
 
+def edit_book(request,id):
+    book = get_object_or_404(Book,id=id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        form.save()
+        return redirect ('book')
+    return render (request,'edit_book.html', context={'form': BookForm(instance=book), 'id':id})
+
+
+def delete_book(request,id):
+    if request.method == 'POST':
+        form = Book.objects.get(pk=id)
+        form.delete()
+        return redirect ('book')
+    book = Book.objects.get(pk=id)
+    return render (request,'delete_book.html', context={'book': book})
+
+
+def add_book(request):#Непонятно почему при создании книги пункт "is_available" - 'False" , хотя по умолчанию 'True"
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        form.save()
+        return redirect('book')
+    form = BookForm(request.POST)
+    data = {
+        'form': form
+    }
+    return render(request,'add_book.html', data)
+
+
+def rent(request):
+    if request.method == 'POST':
+        form = RentalForm(request.POST)
+        form.save()
+        redirect('book')
+    form = RentalForm(request.POST)
+    return render(request,'rent.html',context={'form':form})

@@ -22,8 +22,8 @@ class User(models.Model):
 class Rental(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     book = models.ForeignKey(Book, on_delete=models.DO_NOTHING)
-    rental_date = models.DateField()
-    return_date = models.DateField()
+    rental_date = models.DateTimeField(auto_created=True)
+    return_date = models.DateTimeField(auto_created=True)
 
     def __str__(self):
         return f"{self.user}"

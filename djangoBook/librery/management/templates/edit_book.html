@@ -8,11 +8,12 @@
 <body>
     <form method="post">
         {% csrf_token %}
-        {{ form.user }}<br>
-        {{ form.book }}<br>
-        {{ form.rental_date }}<br>
-        {{ form.return_date }}<br>
-        <button type="submit">Арендовать</button>
+        {{ form.title }}<br>
+        {{ form.author }}<br>
+        {{ form.published_year }}<br>
+        {{ form.genre }}<br>
+        {{ form.is_available }}<br>
+        <button type="submit">Изменить книгу</button>
     </form>
 </body>
 </html>

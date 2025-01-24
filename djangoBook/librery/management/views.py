@@ -2,6 +2,19 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Book, User, Rental
 from .forms import BookForm, RentalForm
 
+# def signup(request):
+#   if request.method == 'POST':
+#     form = SignupForm(request.POST)
+#     if form.is_valid():
+#       user = form.save(commit=False)
+#       user.set_password(form.cleaned_data['password'])  # Хэшируем пароль
+#       user.save()
+#       return redirect('signin')
+#   else:
+#     form = SignupForm()
+#   return render(request, 'auth/signup.html', {'form': form})
+
+
 def book(request):
     if request.method == 'POST':
         form = Book(request.POST)
@@ -90,3 +103,5 @@ def rent(request):
         redirect('book')
     form = RentalForm(request.POST)
     return render(request,'rent.html',context={'form':form})
+
+
